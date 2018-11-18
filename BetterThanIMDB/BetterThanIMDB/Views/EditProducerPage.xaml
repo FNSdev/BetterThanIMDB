@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ext="clr-namespace:BetterThanIMDB.Extensions"
+             x:Class="BetterThanIMDB.Views.EditProducerPage"
+             Title="Edit Producer">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     Text="{ext:Locale Text=applyChanges}" Command="{Binding ApplyCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="15,15,15,15">
+            <Image Source="{Binding Photo}" HeightRequest="250" HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"/>
+            <Editor Text="{Binding Name}" TextColor="Black" HorizontalOptions="Center"/>
+            <Button Text="{Binding DateOfBirth}" BackgroundColor="Transparent"
+                        Image="calendar.png" Command="{Binding SelectDateCommand}" HorizontalOptions="Center"/>
+            <Button Text="{ext:Locale Text=selectPhoto}" BackgroundColor="Transparent "
+                        Image="image.png" Command="{Binding SelectImageCommand}" HorizontalOptions="Center"/>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="{ext:Locale Text=addFilm}" Command="{Binding AddFilmCommand}"/>
+                <Button Text="{ext:Locale Text=removeFilm}" Command="{Binding RemoveFilmCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

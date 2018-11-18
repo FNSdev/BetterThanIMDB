@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ext="clr-namespace:BetterThanIMDB.Extensions"
+             x:Class="BetterThanIMDB.Views.SearchFilmsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="{ext:Locale Text=applyFilter}" Command="{Binding ApplyCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="15,0,15,15">
+            <Entry Text="{Binding Title}"/>
+            <Button Text="{ext:Locale Text=addActor}" Command="{Binding AddActorCommand}"/>
+            <Button Text="{ext:Locale Text=removeActor}" Command="{Binding RemoveActorCommand}"/>
+            <Button Text="{ext:Locale Text=addProducer}" Command="{Binding AddProducerCommand}"/>
+            <Button Text="{ext:Locale Text=removeProducer}" Command="{Binding RemoveProducerCommand}"/>
+            <Button Text="{ext:Locale Text=addGenre}" Command="{Binding AddGenreCommand}"/>
+            <Button Text="{ext:Locale Text=removeGenre}" Command="{Binding RemoveGenreCommand}"/>
+            <TableView>
+                <TableView.Root>
+                    <TableSection>
+                        <EntryCell Placeholder="{ext:Locale Text=minRuntime}" Text="{Binding MinDuration}" Keyboard="Numeric"/>
+                        <EntryCell Placeholder="{ext:Locale Text=maxRuntime}" Text="{Binding MaxDuration}" Keyboard="Numeric"/>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <!--<Label Text="From:" HorizontalOptions="Center" VerticalOptions="Center"/>-->
+                                <Button Text="{Binding MinDate}" Image="calendar.png"
+                                        BackgroundColor="Transparent" Command="{Binding PickMinDateCommand}"/>
+                                <!--<Label Text="To:" VerticalOptions="Center"/>-->
+                                <Button Text="{Binding MaxDate}" Image="calendar.png" 
+                                        BackgroundColor="Transparent" Command="{Binding PickMaxDateCommand}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableView.Root>
+            </TableView>            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

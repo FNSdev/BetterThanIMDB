@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ext="clr-namespace:BetterThanIMDB.Extensions"
+             x:Class="BetterThanIMDB.Views.SearchActorsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="{ext:Locale Text=applyFilter}" Command="{Binding ApplyCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="15,0,15,15">
+            <Entry Text="{Binding Name}"/>
+            <Button Text="{ext:Locale Text=addFilm}" Command="{Binding AddFilmCommand}"/>
+            <Button Text="{ext:Locale Text=removeFilm}" Command="{Binding RemoveFilmCommand}"/>
+            <TableView>
+                <TableView.Root>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <!--<Label Text="From:" HorizontalOptions="Center" VerticalOptions="Center"/>-->
+                                <Button Text="{Binding MinDate}" Image="calendar.png"
+                                        BackgroundColor="Transparent" Command="{Binding PickMinDateCommand}"/>
+                                <!--<Label Text="To:" VerticalOptions="Center"/>-->
+                                <Button Text="{Binding MaxDate}" Image="calendar.png" 
+                                        BackgroundColor="Transparent" Command="{Binding PickMaxDateCommand}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

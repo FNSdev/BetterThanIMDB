@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:BetterThanIMDB.Converters"
+             xmlns:behaviors="clr-namespace:BetterThanIMDB.Behaviors"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             Title="TMDB Persons"
+             x:Class="BetterThanIMDB.Views.TMDBPersonPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DateConverter x:Key="dateConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="0" Grid.Row="0" Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <SearchBar SearchCommand="{Binding SearchCommand}" Text="{Binding Name}" Grid.Column="0"/>
+                <forms:AnimationView Animation="person.json" AutoPlay="True" Loop="True" Grid.Column="1"/>
+            </Grid>
+
+            <ListView CachingStrategy ="RecycleElement" Grid.Column="0" Grid.Row="1" HasUnevenRows="True"
+                      ItemsSource="{Binding Persons}" SeparatorColor="Black" SelectedItem="{Binding SelectedPerson}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5">
+                                <Label Text="{Binding Name}" FontSize="18" TextColor="Black" FontAttributes="Bold"/>
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label Text="Birthday:" FontSize="16" TextColor="Black" />
+                                    <Label Text="{Binding Birthday, Converter={StaticResource dateConverter}}"
+                                           FontSize="16" TextColor="Black"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding SelectItemCommand}"/>
+                </ListView.Behaviors>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

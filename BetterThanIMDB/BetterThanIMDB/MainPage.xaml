@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:BetterThanIMDB"
+            xmlns:views="clr-namespace:BetterThanIMDB.Views"
+            xmlns:ext="clr-namespace:BetterThanIMDB.Extensions"
+            x:Class="BetterThanIMDB.MainPage"
+            Title="BetterThanIMDB">
+    <TabbedPage.Children>
+        <views:FilmsPage Icon="films.png"/>
+        <views:ActorsPage Icon="actors.png"/>
+        <views:ProducersPage Icon="producers.png"/>
+    </TabbedPage.Children>
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Icon="settings.png" Order="Secondary" Text="{ext:Locale Text=settings}" Command="{Binding OpenSettingsCommand}"/>
+    </TabbedPage.ToolbarItems>
+</TabbedPage>

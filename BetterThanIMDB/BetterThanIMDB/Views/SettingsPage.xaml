@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ext="clr-namespace:BetterThanIMDB.Extensions"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="BetterThanIMDB.Views.SettingsPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <forms:AnimationView Grid.Row="0" Animation="gearloading.json" AutoPlay="True" Loop="True"/>
+
+            <StackLayout Orientation="Vertical" Grid.Row="1">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Label Text="English" FontSize="16"/>
+                    <Switch IsToggled="{Binding English}"/>
+                    <Label Text="Русский" FontSize="16"/>
+                    <Switch IsToggled="{Binding Russian}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{ext:Locale Text=downloadImages}" FontSize="16"/>
+                    <Switch IsToggled="{Binding DownloadImages}"/>
+                </StackLayout>
+                <Button Text="{ext:Locale Text=applyChanges}" HorizontalOptions="Center" Command="{Binding ApplyChangesCommand}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ext="clr-namespace:BetterThanIMDB.Extensions"
+             x:Class="BetterThanIMDB.Views.EditFilmPage"
+             Title="{ext:Locale Text=editFilm}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     Text="{ext:Locale Text=applyChanges}" Command="{Binding ApplyCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="15,0,15,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.6*"/>
+                    <RowDefinition Height="0.6*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Image Source="{Binding Poster}" HeightRequest="250" WidthRequest="100" HorizontalOptions="Fill"
+                   Margin="0,10,0,10" Grid.Column="0" Grid.Row="0" Grid.RowSpan="4"/>
+
+                <Editor Text="{Binding Title}" TextColor="Black" Grid.Column="1" Grid.Row="0"/>
+                <Editor Text="{Binding Duration}" TextColor="Black" Keyboard="Numeric" Grid.Column="1" Grid.Row="1"/>
+                <Button Text="{Binding ReleaseDate}" BackgroundColor="Transparent"
+                        Image="calendar.png" Command="{Binding SelectDateCommand}"
+                        Grid.Column="1" Grid.Row="2"/>
+                <Button Text="{ext:Locale Text=selectPoster}" BackgroundColor="Transparent "
+                        Image="image.png" Command="{Binding SelectImageCommand}"
+                        Grid.Column="1" Grid.Row="3"/>
+                 </Grid>
+
+            <Editor Text="{Binding Description}" HeightRequest="150"/>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="{ext:Locale Text=addActor}" Command="{Binding AddActorCommand}"/>
+                <Button Text="{ext:Locale Text=removeActor}" Command="{Binding RemoveActorCommand}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="{ext:Locale Text=addProducer}" Command="{Binding AddProducerCommand}"/>
+                <Button Text="{ext:Locale Text=removeProducer}" Command="{Binding RemoveProducerCommand}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="{ext:Locale Text=addGenre}" Command="{Binding AddGenreCommand}"/>
+                <Button Text="{ext:Locale Text=removeGenre}" Command="{Binding RemoveGenreCommand}"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
